@@ -12,31 +12,77 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.define "ubuntu20" do |ubuntu|
-    ubuntu.vm.box = "generic/ubuntu2010"
-    ubuntu.vm.hostname = "ubuntu-honeypot"
-    ubuntu.vm.box_check_update = false
-    ubuntu.vm.define "ubuntu-honey"
+
+  config.vm.define "ubuntu20" do |box|
+    box.vm.box = "generic/ubuntu2010"
+    box.vm.hostname = "ubuntu-honeypot"
+    box.vm.box_check_update = false
+    box.vm.define "ubuntu-honey"
       
-    ubuntu.vm.provider "virtualbox" do |vb|
+    box.vm.provider "virtualbox" do |vb|
     vb.name = "ubuntu-honeypot"
+        vb.memory = "1024"
     #   # Display the VirtualBox GUI when booting the machine
     #   vb.gui = true
     #
     #   # Customize the amount of memory on the VM:
-    #   vb.memory = "1024"
     end
     
-    ubuntu.vm.provision "shell", path: "./boostrap.sh"
+    box.vm.provision "shell", path: "./configs/setup_ubuntu.sh"
   end
-  # View the documentation for the provider you are using for more
-  # information on available options.
+  
+    config.vm.define "centos7" do |box|
+    box.vm.box = "centos/7"
+    box.vm.hostname = "centos-honeypot"
+    box.vm.box_check_update = false
+    box.vm.define "centos-honey"
+      
+    box.vm.provider "virtualbox" do |vb|
+    vb.name = "centos-honeypot"
+    #   vb.memory = "1024"
+    #   # Display the VirtualBox GUI when booting the machine
+    #   vb.gui = true
+    #
+    #   # Customize the amount of memory on the VM:
+    end
+    
+    box.vm.provision "shell", path: "./configs/setup_centos.sh"
+  end
 
-  # Enable provisioning with a shell script. Additional provisioners such as
-  # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
-  # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell", inline: <<-SHELL
-  #   apt-get update
-  #   apt-get install -y apache2
-  # SHELL
+    config.vm.define "fedora34" do |box|
+    box.vm.box = "generic/fedora34"
+    box.vm.hostname = "fedora34-honeypot"
+    box.vm.box_check_update = false
+    box.vm.define "fedora34-honey"
+      
+    box.vm.provider "virtualbox" do |vb|
+    vb.name = "fedora34-honeypot"
+    #   vb.memory = "1024"
+    #   # Display the VirtualBox GUI when booting the machine
+    #   vb.gui = true
+    #
+    #   # Customize the amount of memory on the VM:
+    end
+    
+    box.vm.provision "shell", path: "./configs/setup_fedora.sh"
+  end
+
+    config.vm.define "centos-stream8" do |box|
+    box.vm.box = "centos/stream8"
+    box.vm.hostname = "stream8-honeypot"
+    box.vm.box_check_update = false
+    box.vm.define "stream8-honey"
+      
+    box.vm.provider "virtualbox" do |vb|
+    vb.name = "stream8-honeypot"
+    #   vb.memory = "1024"
+    #   # Display the VirtualBox GUI when booting the machine
+    #   vb.gui = true
+    #
+    #   # Customize the amount of memory on the VM:
+    end
+    
+    box.vm.provision "shell", path: "./configs/setup_stream.sh"
+  end
+
 end

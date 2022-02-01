@@ -1,3 +1,5 @@
+set -e
+
 git clone https://github.com/technicaldada/pentbox
 
 cd pentbox

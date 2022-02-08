@@ -15,3 +15,7 @@
 - vagrant status - shows all your VMs status
 - vagrant destroy "name" - delete specific VM
 - vagrant halt "name" - stop specific VM
+
+## Pentbox launch
+
+There is pentbox_start.sh/pentbox_launch.sh inside all VMs, use it to start pentbox

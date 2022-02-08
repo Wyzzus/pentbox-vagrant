@@ -9,3 +9,9 @@
 ## Launch
 - vagrant up - start and config all VMs
 - vagrant up "name" - start and config specific VM
+
+## Usefull commands
+- vagrant ssh "name" - connect to specific VM
+- vagrant status - shows all your VMs status
+- vagrant destroy "name" - delete specific VM
+- vagrant halt "name" - stop specific VM
